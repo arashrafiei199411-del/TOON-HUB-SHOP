@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            background-color: white;
+            /* Ensure the iframe has a white background */
+        }
+    </style>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="fa" dir="rtl">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>تون‌هاب - فروشگاه لباس کودک</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <link rel="preload" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
+            as="style" />
+        <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
+            rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"
+            rel="stylesheet" />
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: 'Vazirmatn', 'Inter', sans-serif;
+                direction: rtl;
+                background: white;
+                -webkit-font-smoothing: antialiased;
+            }
+
+            body.modal-open {
+                overflow: hidden;
+            }
+
+            img {
+                max-width: 100%;
+                display: block;
+            }
+
+            button {
+                font-family: inherit;
+                cursor: pointer;
+                border: none;
+                background: none;
+            }
+
+            /* 🎯 Logo Styles - تصویر لوگو */
+            .logo-wrap {
+                position: absolute;
+                top: 16px;
+                right: 16px;
+                z-index: 60;
+                display: flex;
+                align-items: center;
+            }
+
+            @media (min-width: 640px) {
+                .logo-wrap {
+                    top: 24px;
+                    right: 24px;
+                }
+            }
+
+            .logo-img {
+                width: 140px;
+                height: auto;
+                filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
+                transition: transform 200ms ease;
+            }
+
+            .logo-img:hover {
+                transform: scale(1.05);
+            }
+
+            @media (min-width: 640px) {
+                .logo-img {
+                    width: 180px;
+                }
+            }
+
+            @media (min-width: 1024px) {
+                .logo-img {
+                    width: 200px;
+                }
+            }
+
+            .hero {
+                position: relative;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .hero-inner {
+                position: relative;
+                width: 100%;
+                height: 100vh;
+                overflow: hidden;
+            }
+
+            .grain {
+                position: absolute;
+                inset: 0;
+                pointer-events: none;
+                z-index: 50;
+                background-size: 200px 200px;
+                background-repeat: repeat;
+                opacity: 0.4;
+            }
+
+            .carousel {
+                position: absolute;
+                inset: 0;
+                z-index: 3;
+            }
+
+            .carousel-item {
+                position: absolute;
+                aspect-ratio: 0.6 / 1;
+                will-change: transform, filter, opacity;
+                transition: transform 650ms cubic-bezier(0.4, 0, 0.2, 1),
+                    filter 650ms cubic-bezier(0.4, 0, 0.2, 1),
+                    opacity 650ms cubic-bezier(0.4, 0, 0.2, 1),
+                    left 650ms cubic-bezier(0.4, 0, 0.2, 1),
+                    bottom 650ms cubic-bezier(0.4, 0, 0.2, 1),
+                    height 650ms cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .carousel-item img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                object-position: bottom center;
+            }
+
+            .nav-container {
+                position: absolute;
+                bottom: 24px;
+                right: 16px;
+                z-index: 60;
+                max-width: 320px;
+            }
+
+            @media (min-width: 640px) {
+                .nav-container {
+                    bottom: 80px;
+                    right: 96px;
+                }
+            }
+
+            .nav-buttons {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                flex-direction: row-reverse;
+            }
+
+            .nav-btn {
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #374151;
+                border: 2px solid #374151;
+                background: transparent;
+                transition: transform 150ms, background-color 150ms;
+            }
+
+            @media (min-width: 640px) {
+                .nav-btn {
+                    width: 64px;
+                    height: 64px;
+                }
+            }
+
+            .nav-btn:hover {
+                transform: scale(1.08);
+                background-color: rgba(0, 0, 0, 0.08);
+            }
+
+            .products-section {
+                background: linear-gradient(135deg, #fdf2f8 0%, #faf5ff 50%, #eff6ff 100%);
+                padding: 48px 12px;
+                position: relative;
+            }
+
+            @media (min-width: 640px) {
+                .products-section {
+                    padding: 80px 32px;
+                }
+            }
+
+            .products-container {
+                max-width: 1280px;
+                margin: 0 auto;
+            }
+
+            .section-header {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+
+            @media (min-width: 640px) {
+                .section-header {
+                    margin-bottom: 64px;
+                }
+            }
+
+            .section-title {
+                font-size: 30px;
+                font-weight: 700;
+                color: #1f2937;
+                margin-bottom: 12px;
+            }
+
+            @media (min-width: 640px) {
+                .section-title {
+                    font-size: 48px;
+                    margin-bottom: 16px;
+                }
+            }
+
+            .section-subtitle {
+                font-size: 16px;
+                color: #4b5563;
+            }
+
+            @media (min-width: 640px) {
+                .section-subtitle {
+                    font-size: 18px;
+                }
+            }
+
+            .section-divider {
+                width: 80px;
+                height: 4px;
+                background: linear-gradient(to right, #ec4899, #a855f7);
+                margin: 16px auto 0;
+                border-radius: 9999px;
+            }
+
+            @media (min-width: 640px) {
+                .section-divider {
+                    width: 96px;
+                    margin-top: 24px;
+                }
+            }
+
+            .section-hint {
+                font-size: 12px;
+                color: #6b7280;
+                margin-top: 16px;
+            }
+
+            @media (min-width: 640px) {
+                .section-hint {
+                    font-size: 14px;
+                }
+            }
+
+            .products-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            @media (min-width: 1024px) {
+                .products-grid {
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 32px;
+                }
+            }
+
+            .product-card {
+                background: white;
+                border-radius: 16px;
+                overflow: hidden;
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+                transition: transform 300ms, box-shadow 300ms;
+                cursor: pointer;
+            }
+
+            .product-card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            }
+
+            .product-image-wrap {
+                position: relative;
+                height: 160px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+            }
+
+            @media (min-width: 640px) {
+                .product-image-wrap {
+                    height: 224px;
+                }
+            }
+
+            .product-image-wrap img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .product-info {
+                padding: 12px;
+            }
+
+            @media (min-width: 640px) {
+                .product-info {
+                    padding: 20px;
+                }
+            }
+
+            .product-name {
+                font-size: 14px;
+                font-weight: 700;
+                color: #1f2937;
+                margin-bottom: 8px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            @media (min-width: 640px) {
+                .product-name {
+                    font-size: 18px;
+                    margin-bottom: 12px;
+                }
+            }
+
+            .product-price-row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 12px;
+            }
+
+            @media (min-width: 640px) {
+                .product-price-row {
+                    margin-bottom: 16px;
+                }
+            }
+
+            .product-price {
+                font-size: 16px;
+                font-weight: 700;
+            }
+
+            @media (min-width: 640px) {
+                .product-price {
+                    font-size: 24px;
+                }
+            }
+
+            .product-currency {
+                font-size: 12px;
+                color: #6b7280;
+            }
+
+            @media (min-width: 640px) {
+                .product-currency {
+                    font-size: 14px;
+                }
+            }
+
+            .color-dots-row {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                margin-bottom: 12px;
+            }
+
+            .color-dot-mini {
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                border: 2px solid white;
+                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            }
+
+            .color-dots-more {
+                font-size: 12px;
+                color: #6b7280;
+                margin-right: 4px;
+            }
+
+            .add-btn {
+                width: 100%;
+                padding: 8px 12px;
+                border-radius: 12px;
+                color: white;
+                font-weight: 600;
+                font-size: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                transition: opacity 200ms;
+            }
+
+            .add-btn:hover {
+                opacity: 0.9;
+            }
+
+            @media (min-width: 640px) {
+                .add-btn {
+                    padding: 12px 16px;
+                    font-size: 16px;
+                }
+            }
+
+            .cart-fab {
+                position: fixed;
+                top: 24px;
+                left: 16px;
+                z-index: 70;
+                width: 56px;
+                height: 56px;
+                border-radius: 50%;
+                background: white;
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #374151;
+                transition: transform 200ms;
+            }
+
+            @media (min-width: 640px) {
+                .cart-fab {
+                    left: 32px;
+                }
+            }
+
+            .cart-fab:hover {
+                transform: scale(1.1);
+            }
+
+            .cart-badge {
+                position: absolute;
+                top: -4px;
+                right: -4px;
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                background: #ec4899;
+                color: white;
+                font-size: 12px;
+                font-weight: 700;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            @keyframes modalSlideUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px) scale(0.97);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+
+                to {
+                    opacity: 1;
+                }
+            }
+
+            @keyframes imageFade {
+                from {
+                    opacity: 0;
+                    transform: scale(0.95);
+                }
+
+                to {
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+
+            .modal-overlay {
+                position: fixed;
+                inset: 0;
+                z-index: 100;
+                background: rgba(0, 0, 0, 0.6);
+                backdrop-filter: blur(6px);
+                animation: fadeIn 0.25s ease-out;
+            }
+
+            .modal-wrapper {
+                position: fixed;
+                inset: 0;
+                z-index: 101;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 16px;
+                pointer-events: none;
+            }
+
+            .modal-content {
+                position: relative;
+                width: 100%;
+                max-width: 500px;
+                max-height: 90vh;
+                background: white;
+                border-radius: 24px;
+                box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+                animation: modalSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+                overflow: hidden;
+                pointer-events: auto;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .modal-scroll {
+                flex: 1;
+                overflow-y: auto;
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+
+            .modal-scroll::-webkit-scrollbar {
+                display: none;
+            }
+
+            .modal-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 16px;
+                border-bottom: 1px solid #f3f4f6;
+                flex-shrink: 0;
+            }
+
+            .modal-title {
+                font-size: 18px;
+                font-weight: 700;
+                color: #1f2937;
+            }
+
+            .modal-close {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: #f3f4f6;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #374151;
+                transition: background-color 150ms;
+            }
+
+            .modal-close:hover {
+                background: #e5e7eb;
+            }
+
+            .modal-image-wrap {
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                padding: 16px;
+                min-height: 400px;
+                max-height: 480px;
+                background: linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.3) 100%);
+            }
+
+            .modal-image-wrap img {
+                max-width: 100%;
+                max-height: 100%;
+                width: auto;
+                height: auto;
+                object-fit: contain;
+                object-position: center;
+                animation: imageFade 0.3s ease-out;
+                filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+            }
+
+            .modal-image-badge {
+                position: absolute;
+                top: 12px;
+                right: 12px;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(4px);
+                padding: 6px 12px;
+                border-radius: 9999px;
+                font-size: 14px;
+                font-weight: 700;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .modal-image-badge-dot {
+                width: 16px;
+                height: 16px;
+                border-radius: 50%;
+                border: 2px solid white;
+                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            }
+
+            .modal-body {
+                padding: 20px;
+                background: rgba(255, 255, 255, 0.75);
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+                border-top: 1px solid rgba(255, 255, 255, 0.5);
+            }
+
+            .modal-product-name {
+                font-size: 20px;
+                font-weight: 700;
+                color: #1f2937;
+                margin-bottom: 4px;
+            }
+
+            .modal-price-row {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                margin-bottom: 16px;
+            }
+
+            .modal-price {
+                font-size: 24px;
+                font-weight: 700;
+            }
+
+            .modal-currency {
+                font-size: 14px;
+                color: #6b7280;
+            }
+
+            .modal-colors-row {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                flex-wrap: wrap;
+                margin-bottom: 20px;
+            }
+
+            .color-selector {
+                position: relative;
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: transform 200ms;
+                cursor: pointer;
+            }
+
+            .color-selector:hover {
+                transform: scale(1.2);
+            }
+
+            .color-selector.selected-ring {
+                box-shadow: 0 0 0 2px white, 0 0 0 4px currentColor, 0 4px 12px rgba(0, 0, 0, 0.2);
+            }
+
+            .color-selector-inner-check {
+                color: white;
+                filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+            }
+
+            .modal-add-btn {
+                width: 100%;
+                padding: 16px;
+                border-radius: 12px;
+                color: white;
+                font-weight: 700;
+                font-size: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
+                transition: transform 200ms, opacity 200ms, box-shadow 200ms;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+                border: 2px solid rgba(255, 255, 255, 0.3);
+            }
+
+            .modal-add-btn:hover {
+                transform: scale(1.02);
+                box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+            }
+
+            .cart-overlay {
+                position: fixed;
+                inset: 0;
+                z-index: 100;
+                background: rgba(0, 0, 0, 0.5);
+                transition: opacity 300ms;
+            }
+
+            .cart-overlay.hidden {
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            .cart-drawer {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: min(420px, 90vw);
+                background: white;
+                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+                display: flex;
+                flex-direction: column;
+                transition: transform 300ms ease-out;
+                z-index: 101;
+            }
+
+            .cart-drawer.closed {
+                transform: translateX(-100%);
+            }
+
+            .cart-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 20px;
+                border-bottom: 1px solid #e5e7eb;
+            }
+
+            .cart-header-title {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .cart-header-title h2 {
+                font-size: 20px;
+                font-weight: 700;
+                color: #1f2937;
+            }
+
+            .cart-count-badge {
+                background: #ec4899;
+                color: white;
+                font-size: 12px;
+                font-weight: 700;
+                padding: 4px 8px;
+                border-radius: 9999px;
+            }
+
+            .cart-items {
+                flex: 1;
+                overflow-y: auto;
+                padding: 20px;
+            }
+
+            .cart-empty {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100%;
+                text-align: center;
+            }
+
+            .cart-empty-icon {
+                width: 96px;
+                height: 96px;
+                border-radius: 50%;
+                background: #f3f4f6;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 16px;
+            }
+
+            .cart-item {
+                display: flex;
+                gap: 12px;
+                padding: 12px;
+                background: #f9fafb;
+                border-radius: 12px;
+                margin-bottom: 12px;
+            }
+
+            .cart-item-image {
+                width: 80px;
+                height: 80px;
+                border-radius: 8px;
+                flex-shrink: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+            }
+
+            .cart-item-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .cart-item-info {
+                flex: 1;
+                min-width: 0;
+            }
+
+            .cart-item-name {
+                font-weight: 700;
+                color: #1f2937;
+                font-size: 14px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            .cart-item-variant {
+                display: flex;
+                align-items: center;
+                gap: 4px;
+                margin-top: 4px;
+            }
+
+            .cart-item-variant-dot {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                border: 1px solid white;
+                box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+            }
+
+            .cart-item-variant-text {
+                font-size: 12px;
+                color: #6b7280;
+            }
+
+            .cart-item-price {
+                font-size: 14px;
+                margin-top: 4px;
+            }
+
+            .cart-item-price-currency {
+                font-size: 12px;
+                color: #6b7280;
+            }
+
+            .cart-item-actions {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 8px;
+            }
+
+            .cart-item-qty {
+                font-size: 12px;
+                color: #6b7280;
+            }
+
+            .cart-item-remove {
+                color: #ef4444;
+                padding: 6px;
+                border-radius: 8px;
+                transition: background-color 150ms;
+            }
+
+            .cart-item-remove:hover {
+                background: #fef2f2;
+            }
+
+            .cart-footer {
+                border-top: 1px solid #e5e7eb;
+                padding: 20px;
+            }
+
+            .cart-total-row {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 12px;
+            }
+
+            .cart-total-label {
+                color: #4b5563;
+            }
+
+            .cart-total-value {
+                font-weight: 700;
+                color: #1f2937;
+            }
+
+            .cart-clear-btn {
+                width: 100%;
+                padding: 10px;
+                border-radius: 12px;
+                color: #4b5563;
+                font-weight: 600;
+                font-size: 14px;
+                border: 2px solid #e5e7eb;
+                margin-bottom: 12px;
+                transition: background-color 150ms;
+            }
+
+            .cart-clear-btn:hover {
+                background: #f9fafb;
+            }
+
+            .cart-checkout-btn {
+                width: 100%;
+                padding: 12px;
+                border-radius: 12px;
+                color: white;
+                font-weight: 700;
+                font-size: 16px;
+                background: linear-gradient(to right, #ec4899, #a855f7);
+                transition: opacity 200ms;
+            }
+
+            .cart-checkout-btn:hover {
+                opacity: 0.9;
+            }
+
+            .no-image-placeholder {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .no-image-text {
+                font-size: 12px;
+                color: #9ca3af;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="root"></div>
+
+        <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+        <script>
+            const { useState, useEffect, useCallback, useMemo, memo } = React;
+            const h = React.createElement;
+
+            const HERO_IMAGES = [
+                { src: '20.png', bg: '#E5E7EB', name: 'کاراکتر ۱' },
+                { src: '19.png', bg: '#DBEAFE', name: 'کاراکتر ۲' },
+                { src: '18.png', bg: '#FEF3C7', name: 'کاراکتر ۳' },
+                { src: '17.png', bg: '#F3F4F6', name: 'کاراکتر ۴' },
+                { src: '26_nobg.png', bg: '#FCE7F3', name: 'کاراکتر ۵' },
+                { src: '25_nobg.png', bg: '#D1FAE5', name: 'کاراکتر ۶' },
+                { src: '24_nobg.png', bg: '#FEF9C3', name: 'کاراکتر ۷' },
+                { src: '23_nobg.png', bg: '#E0E7FF', name: 'کاراکتر ۸' },
+                { src: '22_nobg.png', bg: '#FEE2E2', name: 'کاراکتر ۹' },
+                { src: '21_nobg.png', bg: '#CCFBF1', name: 'کاراکتر ۱۰' },
+            ];
+            const TOTAL_CHARACTERS = HERO_IMAGES.length;
+
+            const PRODUCTS = [
+                {
+                    id: 1, name: 'کاپشن خرسی', price: '۴۵۰,۰۰۰', color: '#3B82F6', image: '13.png',
+                    variants: [
+                        { color: '#3B82F6', name: 'آبی', image: '13.png' },
+                        { color: '#EC4899', name: 'صورتی', image: '24_nobg.png' },
+                        { color: '#10B981', name: 'سبز', image: '22_nobg.png' },
+                        { color: '#F97316', name: 'نارنجی', image: '23_nobg.png' },
+                    ]
+                },
+                {
+                    id: 2, name: 'کاپشن بچگانه', price: '۳۸۰,۰۰۰', color: '#EC4899', image: '14.png',
+                    variants: [
+                        { color: '#EC4899', name: 'صورتی', image: '14.png' },
+                        { color: '#A855F7', name: 'بنفش', image: '25_nobg.png' },
+                        { color: '#EF4444', name: 'قرمز', image: '33_nobg.png' },
+                    ]
+                },
+                {
+                    id: 3, name: 'کاپشن اسپایدرمن', price: '۵۲۰,۰۰۰', color: '#EF4444', image: '15.png',
+                    variants: [
+                        { color: '#EF4444', name: 'قرمز', image: '29_nobg.png' },
+                        { color: '#3B82F6', name: 'آبی', image: '28_nobg.png' },
+                        { color: '#1F2937', name: 'مشکی', image: '30_nobg.png' },
+                    ]
+                },
+                {
+                    id: 4, name: 'کاپشن گلی', price: '۴۲۰,۰۰۰', color: '#06B6D4', image: '16.png',
+                    variants: [
+                        { color: '#06B6D4', name: 'فیروزه‌ای', image: '16.png' },
+                        { color: '#EAB308', name: 'زرد', image: '26_nobg.png' },
+                        { color: '#EC4899', name: 'صورتی', image: '14.png' },
+                    ]
+                },
+                {
+                    id: 5, name: 'کاپشن اسپرت', price: '۳۹۰,۰۰۰', color: '#EAB308', image: '33_nobg.png',
+                    variants: [
+                        { color: '#EAB308', name: 'زرد', image: '33_nobg.png' },
+                        { color: '#10B981', name: 'سبز', image: '27_nobg.png' },
+                        { color: '#3B82F6', name: 'آبی', image: '13.png' },
+                        { color: '#EF4444', name: 'قرمز', image: '15.png' },
+                    ]
+                },
+                {
+                    id: 6, name: 'کاپشن زمستانی', price: '۴۸۰,۰۰۰', color: '#A855F7', image: '22_nobg.png',
+                    variants: [
+                        { color: '#A855F7', name: 'بنفش', image: '22_nobg.png' },
+                        { color: '#1F2937', name: 'مشکی', image: '31_nobg.png' },
+                        { color: '#EC4899', name: 'صورتی', image: '14.png' },
+                    ]
+                },
+                {
+                    id: 7, name: 'کاپشن طبیعت', price: '۴۱۰,۰۰۰', color: '#10B981', image: '34_nobg.png',
+                    variants: [
+                        { color: '#10B981', name: 'سبز', image: '34_nobg.png' },
+                        { color: '#EAB308', name: 'زرد', image: '29_nobg.png' },
+                        { color: '#F97316', name: 'نارنجی', image: '26_nobg.png' },
+                    ]
+                },
+                {
+                    id: 8, name: 'کاپشن پاییزی', price: '۴۴۰,۰۰۰', color: '#F97316', image: '30_nobg.png',
+                    variants: [
+                        { color: '#F97316', name: 'نارنجی', image: '30_nobg.png' },
+                        { color: '#EAB308', name: 'زرد', image: '29_nobg.png' },
+                        { color: '#EF4444', name: 'قرمز', image: '27_nobg.png' },
+                    ]
+                },
+                {
+                    id: 9, name: 'کاپشن کلاسیک', price: '۵۰۰,۰۰۰', color: '#1F2937', image: '25_nobg.png',
+                    variants: [
+                        { color: '#1F2937', name: 'مشکی', image: '25_nobg.png' },
+                        { color: '#3B82F6', name: 'آبی', image: '27_nobg.png' },
+                        { color: '#A855F7', name: 'بنفش', image: '28_nobg.png' },
+                        { color: '#10B981', name: 'سبز', image: '29_nobg.png' },
+                    ]
+                },
+            ];
+
+            const ICONS = {
+                arrowLeft: h('svg', { width: 26, height: 26, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2.25, strokeLinecap: 'round', strokeLinejoin: 'round' },
+                    h('path', { d: 'M19 12H5' }), h('path', { d: 'M12 19l-7-7 7-7' })
+                ),
+                arrowRight: h('svg', { width: 26, height: 26, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2.25, strokeLinecap: 'round', strokeLinejoin: 'round' },
+                    h('path', { d: 'M5 12h14' }), h('path', { d: 'M12 5l7 7-7 7' })
+                ),
+                cart: h('svg', { width: 20, height: 20, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' },
+                    h('circle', { cx: 9, cy: 21, r: 1 }), h('circle', { cx: 20, cy: 21, r: 1 }),
+                    h('path', { d: 'M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6' })
+                ),
+                cartLarge: h('svg', { width: 24, height: 24, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' },
+                    h('circle', { cx: 9, cy: 21, r: 1 }), h('circle', { cx: 20, cy: 21, r: 1 }),
+                    h('path', { d: 'M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6' })
+                ),
+                cartHuge: h('svg', { width: 40, height: 40, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' },
+                    h('circle', { cx: 9, cy: 21, r: 1 }), h('circle', { cx: 20, cy: 21, r: 1 }),
+                    h('path', { d: 'M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6' })
+                ),
+                close: h('svg', { width: 20, height: 20, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' },
+                    h('line', { x1: 18, y1: 6, x2: 6, y2: 18 }), h('line', { x1: 6, y1: 6, x2: 18, y2: 18 })
+                ),
+                trash: h('svg', { width: 16, height: 16, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round' },
+                    h('polyline', { points: '3 6 5 6 21 6' }),
+                    h('path', { d: 'M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2' })
+                ),
+                check: h('svg', { width: 14, height: 14, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 3.5, strokeLinecap: 'round', strokeLinejoin: 'round' },
+                    h('polyline', { points: '20 6 9 17 4 12' })
+                ),
+                checkSmall: h('svg', { width: 16, height: 16, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 3, strokeLinecap: 'round', strokeLinejoin: 'round' },
+                    h('polyline', { points: '20 6 9 17 4 12' })
+                ),
+                clothing: (color) => h('svg', { width: 60, height: 60, viewBox: '0 0 24 24', fill: 'none', stroke: color, strokeWidth: 1.5, strokeLinecap: 'round', strokeLinejoin: 'round' },
+                    h('path', { d: 'M20.38 3.46L16 2a4 4 0 01-8 0L3.62 3.46a2 2 0 00-1.34 2.23l.58 3.47a1 1 0 00.99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 002-2V10h2.15a1 1 0 00.99-.84l.58-3.47a2 2 0 00-1.34-2.23z' })
+                ),
+            };
+
+            const GRAIN_SVG = `data:image/svg+xml,${encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/></filter><rect width='200' height='200' filter='url(#n)' opacity='0.08'/></svg>`)}`;
+
+            function HeroSection() {
+                const [activeIndex, setActiveIndex] = useState(0);
+                const [isAnimating, setIsAnimating] = useState(false);
+                const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
+
+                useEffect(() => {
+                    HERO_IMAGES.forEach(img => {
+                        const image = new Image();
+                        image.src = img.src;
+                    });
+                    // Preload logo
+                    const logoImg = new Image();
+                    logoImg.src = 'logo.png';
+                }, []);
+
+                useEffect(() => {
+                    let timer;
+                    const handleResize = () => {
+                        clearTimeout(timer);
+                        timer = setTimeout(() => setIsMobile(window.innerWidth < 640), 100);
+                    };
+                    window.addEventListener('resize', handleResize);
+                    return () => { window.removeEventListener('resize', handleResize); clearTimeout(timer); };
+                }, []);
+
+                const navigate = useCallback((direction) => {
+                    if (isAnimating) return;
+                    setIsAnimating(true);
+                    setActiveIndex(prev => direction === 'next' ? (prev + 1) % TOTAL_CHARACTERS : (prev + TOTAL_CHARACTERS - 1) % TOTAL_CHARACTERS);
+                    setTimeout(() => setIsAnimating(false), 650);
+                }, [isAnimating]);
+
+                const getItemStyle = (idx) => {
+                    const diff = (idx - activeIndex + TOTAL_CHARACTERS) % TOTAL_CHARACTERS;
+                    const s = isMobile;
+                    const base = {
+                        position: 'absolute', aspectRatio: '0.6 / 1',
+                        willChange: 'transform, filter, opacity',
+                        transition: 'transform 650ms cubic-bezier(0.4,0,0.2,1), filter 650ms cubic-bezier(0.4,0,0.2,1), opacity 650ms cubic-bezier(0.4,0,0.2,1), left 650ms cubic-bezier(0.4,0,0.2,1), bottom 650ms cubic-bezier(0.4,0,0.2,1), height 650ms cubic-bezier(0.4,0,0.2,1)',
+                    };
+
+                    const isLeft = diff > 5;
+                    const distance = isLeft ? TOTAL_CHARACTERS - diff : diff;
+
+                    let scale, blur, opacity, zIndex, left, height, bottom;
+
+                    if (distance === 0) {
+                        scale = s ? 1.15 : 1.5; blur = 0; opacity = 1; zIndex = 50;
+                        left = '50%'; height = s ? '55%' : '88%'; bottom = s ? '20%' : '0%';
+                    } else if (distance === 1) {
+                        scale = s ? 0.85 : 1.0; blur = 1; opacity = 0.9; zIndex = 40;
+                        left = isLeft ? (s ? '15%' : '22%') : (s ? '85%' : '78%');
+                        height = s ? '40%' : '60%'; bottom = s ? '25%' : '8%';
+                    } else if (distance === 2) {
+                        scale = s ? 0.65 : 0.75; blur = 2; opacity = 0.75; zIndex = 30;
+                        left = isLeft ? (s ? '8%' : '12%') : (s ? '92%' : '88%');
+                        height = s ? '28%' : '42%'; bottom = s ? '28%' : '10%';
+                    } else if (distance === 3) {
+                        scale = s ? 0.5 : 0.55; blur = 3; opacity = 0.6; zIndex = 20;
+                        left = isLeft ? (s ? '3%' : '5%') : (s ? '97%' : '95%');
+                        height = s ? '20%' : '30%'; bottom = s ? '30%' : '12%';
+                    } else if (distance === 4) {
+                        scale = s ? 0.4 : 0.4; blur = 4; opacity = 0.45; zIndex = 10;
+                        left = '50%'; height = s ? '15%' : '22%'; bottom = s ? '32%' : '14%';
+                    } else {
+                        scale = 0.3; blur = 6; opacity = 0; zIndex = 1;
+                        left = '50%'; height = '10%'; bottom = '35%';
+                    }
+
+                    return {
+                        ...base,
+                        transform: `translateX(-50%) scale(${scale})`,
+                        filter: `blur(${blur}px)`,
+                        opacity, zIndex, left, height, bottom,
+                    };
+                };
+
+                return h('div', {
+                    className: 'hero',
+                    style: { backgroundColor: HERO_IMAGES[activeIndex].bg, transition: 'background-color 650ms cubic-bezier(0.4,0,0.2,1)' }
+                },
+                    h('div', { className: 'hero-inner' },
+                        h('div', { className: 'grain', style: { backgroundImage: `url("${GRAIN_SVG}")` } }),
+                        // 🎯 لوگوی تصویری TOON HUB SHOP
+                        h('div', { className: 'logo-wrap' },
+                            h('img', {
+                                className: 'logo-img',
+                                src: '1_nobg.png',
+                                alt: 'TOON HUB SHOP',
+                                draggable: false
+                            })
+                        ),
+                        h('div', { className: 'carousel' },
+                            HERO_IMAGES.map((img, idx) => {
+                                const style = getItemStyle(idx);
+                                return h('div', { key: idx, className: 'carousel-item', style },
+                                    h('img', { src: img.src, alt: img.name, draggable: false })
+                                );
+                            })
+                        ),
+                        h('div', { className: 'nav-container' },
+                            h('div', { className: 'nav-buttons' },
+                                h('button', {
+                                    className: 'nav-btn', onClick: () => navigate('next'), title: 'بعدی',
+                                    onMouseEnter: e => { e.currentTarget.style.transform = 'scale(1.08)'; e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.08)'; },
+                                    onMouseLeave: e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.backgroundColor = 'transparent'; }
+                                }, ICONS.arrowLeft),
+                                h('button', {
+                                    className: 'nav-btn', onClick: () => navigate('prev'), title: 'قبلی',
+                                    onMouseEnter: e => { e.currentTarget.style.transform = 'scale(1.08)'; e.currentTarget.style.backgroundColor = 'rgba(0,0,0,0.08)'; },
+                                    onMouseLeave: e => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.backgroundColor = 'transparent'; }
+                                }, ICONS.arrowRight)
+                            )
+                        )
+                    )
+                );
+            }
+
+            const ProductCard = memo(function ProductCard({ product, onOpenModal }) {
+                const [isHovered, setIsHovered] = useState(false);
+                const [imageError, setImageError] = useState(false);
+                const hasImage = product.image && product.image.trim() !== '';
+
+                return h('div', {
+                    className: 'product-card',
+                    style: { transform: isHovered ? 'translateY(-6px)' : 'translateY(0)' },
+                    onMouseEnter: () => setIsHovered(true),
+                    onMouseLeave: () => setIsHovered(false),
+                    onClick: () => onOpenModal(product)
+                },
+                    h('div', {
+                        className: 'product-image-wrap',
+                        style: { backgroundColor: product.color + '20' }
+                    },
+                        hasImage && !imageError
+                            ? h('img', {
+                                src: product.image, alt: product.name,
+                                loading: 'lazy',
+                                onError: () => setImageError(true)
+                            })
+                            : h('div', { className: 'no-image-placeholder' },
+                                ICONS.clothing(product.color),
+                                h('span', { className: 'no-image-text' }, 'بدون تصویر')
+                            )
+                    ),
+                    h('div', { className: 'product-info' },
+                        h('h3', { className: 'product-name' }, product.name),
+                        h('div', { className: 'product-price-row' },
+                            h('span', { className: 'product-price', style: { color: product.color } }, product.price),
+                            h('span', { className: 'product-currency' }, 'تومان')
+                        ),
+                        product.variants && product.variants.length > 1 &&
+                        h('div', { className: 'color-dots-row' },
+                            product.variants.slice(0, 4).map((v, i) =>
+                                h('div', { key: i, className: 'color-dot-mini', style: { backgroundColor: v.color }, title: v.name })
+                            ),
+                            product.variants.length > 4 && h('span', { className: 'color-dots-more' }, '+', product.variants.length - 4)
+                        ),
+                        h('button', {
+                            className: 'add-btn',
+                            style: { backgroundColor: product.color },
+                            onClick: (e) => { e.stopPropagation(); onOpenModal(product); }
+                        }, 'مشاهده و خرید')
+                    )
+                );
+            });
+
+            function ProductModal({ product, onClose, onAddToCart }) {
+                const [selectedVariantIdx, setSelectedVariantIdx] = useState(0);
+                const [imageError, setImageError] = useState(false);
+                const [added, setAdded] = useState(false);
+
+                useEffect(() => {
+                    document.body.classList.add('modal-open');
+                    return () => {
+                        document.body.classList.remove('modal-open');
+                    };
+                }, []);
+
+                const selectedVariant = product.variants[selectedVariantIdx];
+                const hasImage = selectedVariant.image && selectedVariant.image.trim() !== '';
+
+                const handleAddToCart = () => {
+                    onAddToCart({
+                        ...product,
+                        color: selectedVariant.color,
+                        image: selectedVariant.image,
+                        name: `${product.name} - ${selectedVariant.name}`,
+                        variantName: selectedVariant.name,
+                    });
+                    setAdded(true);
+                    setTimeout(() => { setAdded(false); onClose(); }, 1200);
+                };
+
+                return h(React.Fragment, null,
+                    h('div', { className: 'modal-overlay', onClick: onClose }),
+                    h('div', { className: 'modal-wrapper' },
+                        h('div', { className: 'modal-content' },
+                            h('div', { className: 'modal-header' },
+                                h('h2', { className: 'modal-title' }, 'جزئیات محصول'),
+                                h('button', { className: 'modal-close', onClick: onClose }, ICONS.close)
+                            ),
+                            h('div', { className: 'modal-scroll' },
+                                h('div', {
+                                    className: 'modal-image-wrap',
+                                    style: { backgroundColor: selectedVariant.color + '15' }
+                                },
+                                    hasImage && !imageError
+                                        ? h('img', {
+                                            key: selectedVariant.image,
+                                            src: selectedVariant.image,
+                                            alt: `${product.name} - ${selectedVariant.name}`,
+                                            onError: () => setImageError(true)
+                                        })
+                                        : h('div', { className: 'no-image-placeholder' },
+                                            ICONS.clothing(selectedVariant.color),
+                                            h('span', { className: 'no-image-text' }, 'بدون تصویر')
+                                        ),
+                                    h('div', { className: 'modal-image-badge' },
+                                        h('div', { className: 'modal-image-badge-dot', style: { backgroundColor: selectedVariant.color } }),
+                                        h('span', { style: { color: '#374151' } }, selectedVariant.name)
+                                    )
+                                ),
+                                h('div', { className: 'modal-body' },
+                                    h('h3', { className: 'modal-product-name' }, product.name),
+                                    h('div', { className: 'modal-price-row' },
+                                        h('span', { className: 'modal-price', style: { color: selectedVariant.color } }, product.price),
+                                        h('span', { className: 'modal-currency' }, 'تومان')
+                                    ),
+                                    h('div', { className: 'modal-colors-row' },
+                                        product.variants.map((variant, idx) =>
+                                            h('button', {
+                                                key: idx,
+                                                className: 'color-selector' + (selectedVariantIdx === idx ? ' selected-ring' : ''),
+                                                style: {
+                                                    backgroundColor: variant.color,
+                                                    color: variant.color,
+                                                },
+                                                title: variant.name,
+                                                onClick: () => { setSelectedVariantIdx(idx); setImageError(false); }
+                                            },
+                                                selectedVariantIdx === idx && h('div', { className: 'color-selector-inner-check' }, ICONS.check)
+                                            )
+                                        )
+                                    ),
+                                    h('button', {
+                                        className: 'modal-add-btn',
+                                        style: {
+                                            backgroundColor: added ? '#10B981' : selectedVariant.color,
+                                        },
+                                        onClick: handleAddToCart
+                                    },
+                                        added
+                                            ? h(React.Fragment, null, ICONS.checkSmall, ' اضافه شد به سبد!')
+                                            : h(React.Fragment, null, ICONS.cart, ' افزودن به سبد خرید')
+                                    )
+                                )
+                            )
+                        )
+                    )
+                );
+            }
+
+            function CartDrawer({ isOpen, onClose, cart, onRemove, onClear }) {
+                const totalItems = useMemo(() => cart.reduce((sum, item) => sum + item.quantity, 0), [cart]);
+
+                return h(React.Fragment, null,
+                    h('div', {
+                        className: `cart-overlay ${isOpen ? '' : 'hidden'}`,
+                        onClick: onClose
+                    }),
+                    h('div', {
+                        className: `cart-drawer ${isOpen ? '' : 'closed'}`
+                    },
+                        h('div', { className: 'cart-header' },
+                            h('div', { className: 'cart-header-title' },
+                                ICONS.cartLarge,
+                                h('h2', null, 'سبد خرید'),
+                                totalItems > 0 && h('span', { className: 'cart-count-badge' }, totalItems)
+                            ),
+                            h('button', { className: 'modal-close', onClick: onClose }, ICONS.close)
+                        ),
+                        h('div', { className: 'cart-items' },
+                            cart.length === 0
+                                ? h('div', { className: 'cart-empty' },
+                                    h('div', { className: 'cart-empty-icon' }, ICONS.cartHuge),
+                                    h('p', { style: { color: '#6b7280', fontSize: 18, marginBottom: 8 } }, 'سبد خرید خالی است'),
+                                    h('p', { style: { color: '#9ca3af', fontSize: 14 } }, 'محصولات مورد علاقه خود را اضافه کنید')
+                                )
+                                : cart.map(item =>
+                                    h('div', { key: item.id + '-' + (item.variantName || ''), className: 'cart-item' },
+                                        h('div', {
+                                            className: 'cart-item-image',
+                                            style: { backgroundColor: item.color + '20' }
+                                        },
+                                            item.image
+                                                ? h('img', { src: item.image, alt: item.name, loading: 'lazy' })
+                                                : ICONS.clothing(item.color)
+                                        ),
+                                        h('div', { className: 'cart-item-info' },
+                                            h('h4', { className: 'cart-item-name' }, item.name),
+                                            item.variantName && h('div', { className: 'cart-item-variant' },
+                                                h('div', { className: 'cart-item-variant-dot', style: { backgroundColor: item.color } }),
+                                                h('span', { className: 'cart-item-variant-text' }, 'رنگ: ', item.variantName)
+                                            ),
+                                            h('p', { className: 'cart-item-price', style: { color: item.color } },
+                                                item.price, ' ',
+                                                h('span', { className: 'cart-item-price-currency' }, 'تومان')
+                                            ),
+                                            h('div', { className: 'cart-item-actions' },
+                                                h('span', { className: 'cart-item-qty' }, 'تعداد: ', item.quantity),
+                                                h('button', {
+                                                    className: 'cart-item-remove',
+                                                    onClick: () => onRemove(item.id, item.variantName),
+                                                    title: 'حذف'
+                                                }, ICONS.trash)
+                                            )
+                                        )
+                                    )
+                                )
+                        ),
+                        cart.length > 0 && h('div', { className: 'cart-footer' },
+                            h('div', { className: 'cart-total-row' },
+                                h('span', { className: 'cart-total-label' }, 'تعداد کل:'),
+                                h('span', { className: 'cart-total-value' }, totalItems, ' محصول')
+                            ),
+                            h('button', { className: 'cart-clear-btn', onClick: onClear }, 'پاک کردن سبد'),
+                            h('button', { className: 'cart-checkout-btn' }, 'تکمیل خرید')
+                        )
+                    )
+                );
+            }
+
+            function ProductsSection({ cart, onAddToCart, onOpenCart, onOpenModal }) {
+                const totalItems = useMemo(() => cart.reduce((sum, item) => sum + item.quantity, 0), [cart]);
+
+                return h('div', { className: 'products-section' },
+                    h('button', {
+                        className: 'cart-fab',
+                        onClick: onOpenCart,
+                        title: 'سبد خرید'
+                    },
+                        ICONS.cartLarge,
+                        totalItems > 0 && h('span', { className: 'cart-badge' }, totalItems)
+                    ),
+                    h('div', { className: 'products-container' },
+                        h('div', { className: 'section-header' },
+                            h('h2', { className: 'section-title' }, 'محصولات ویژه'),
+                            h('p', { className: 'section-subtitle' }, 'بهترین کاپشن‌های کودکانه با کیفیت عالی'),
+                            h('div', { className: 'section-divider' }),
+                            h('p', { className: 'section-hint' }, '🎨 روی هر محصول کلیک کن تا رنگ‌های مختلف را ببینی!')
+                        ),
+                        h('div', { className: 'products-grid' },
+                            PRODUCTS.map(product =>
+                                h(ProductCard, {
+                                    key: product.id,
+                                    product,
+                                    onOpenModal
+                                })
+                            )
+                        )
+                    )
+                );
+            }
+
+            function App() {
+                const [cart, setCart] = useState([]);
+                const [isCartOpen, setIsCartOpen] = useState(false);
+                const [modalProduct, setModalProduct] = useState(null);
+
+                const handleAddToCart = useCallback((product) => {
+                    setCart(prev => {
+                        const existing = prev.find(item => item.id === product.id && item.variantName === product.variantName);
+                        if (existing) {
+                            return prev.map(item =>
+                                item.id === product.id && item.variantName === product.variantName
+                                    ? { ...item, quantity: item.quantity + 1 }
+                                    : item
+                            );
+                        }
+                        return [...prev, { ...product, quantity: 1 }];
+                    });
+                }, []);
+
+                const handleRemoveFromCart = useCallback((productId, variantName) => {
+                    setCart(prev => prev.filter(item => !(item.id === productId && item.variantName === variantName)));
+                }, []);
+
+                const handleClearCart = useCallback(() => setCart([]), []);
+
+                return h(React.Fragment, null,
+                    h(HeroSection, null),
+                    h(ProductsSection, {
+                        cart,
+                        onAddToCart: handleAddToCart,
+                        onOpenCart: () => setIsCartOpen(true),
+                        onOpenModal: (product) => setModalProduct(product)
+                    }),
+                    h(CartDrawer, {
+                        isOpen: isCartOpen,
+                        onClose: () => setIsCartOpen(false),
+                        cart,
+                        onRemove: handleRemoveFromCart,
+                        onClear: handleClearCart
+                    }),
+                    modalProduct && h(ProductModal, {
+                        product: modalProduct,
+                        onClose: () => setModalProduct(null),
+                        onAddToCart: handleAddToCart
+                    })
+                );
+            }
+
+            const root = ReactDOM.createRoot(document.getElementById('root'));
+            root.render(h(App, null));
+        </script>
+    </body>
+
+    </html>
+
+
+    <script>
+        logoImg.src = '1.jpg';  // ← نام فایل خود را اینجا بگذارید
+
+        h('img', {
+            className: '1.jpg',
+            src: '1.jpg',  // ← نام فایل خود را اینجا بگذارید
+            ...
+})
+
+
+    </script>
+</body>
+
+</html>
